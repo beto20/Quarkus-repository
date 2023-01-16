@@ -1,4 +1,4 @@
-package com.alberto.course.model.dto.response;
+package com.alberto.course.model.dto;
 
 import java.io.Serializable;
 

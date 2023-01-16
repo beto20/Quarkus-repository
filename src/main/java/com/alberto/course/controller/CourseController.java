@@ -1,10 +1,8 @@
 package com.alberto.course.controller;
 
 import com.alberto.course.facade.CourseFacade;
-import com.alberto.course.model.dto.request.CourseRequest;
-import com.alberto.course.model.dto.response.CourseResponse;
-import com.alberto.course.model.entity.CourseEntity;
-import com.alberto.course.repository.CourseRepository;
+import com.alberto.course.model.dto.CourseRequest;
+import com.alberto.course.model.dto.CourseResponse;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -14,14 +12,13 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Tag(name = "Course")
-@Path("/api/courses")
+@Path("/api/v1/courses")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @ApplicationScoped
@@ -40,19 +37,19 @@ public class CourseController {
                     schema = @Schema(type = SchemaType.ARRAY, implementation = CourseResponse.class)
             )
     )
-    public List<CourseResponse> getCoursesList() {
+    public List<CourseResponse> coursesCatalog() {
         return courseFacade.getCourses();
     }
 
     @GET
     @Path("/{id}")
-    public CourseResponse getCourseById(@PathParam("id") Integer id) {
+    public CourseResponse getCourseDetail(@PathParam("id") Integer id) {
         return courseFacade.getCoursesById(id);
     }
 
     @GET
     @Path("/title")
-    public CourseResponse getCourseByTitle(@QueryParam("name") String name) {
+    public CourseResponse searchCourseByTitle(@QueryParam("name") String name) {
         return courseFacade.getCoursesByTitle(name);
     }
 
@@ -73,7 +70,7 @@ public class CourseController {
         }
     )
     @POST
-    public Response addNewCourse(CourseRequest courseRequest) {
+    public Response registerNewCourse(CourseRequest courseRequest) {
         courseFacade.saveCourse(courseRequest);
         return Response.status(Response.Status.CREATED).build();
     }
@@ -87,7 +84,7 @@ public class CourseController {
                     schema = @Schema(type = SchemaType.OBJECT, implementation = CourseResponse.class)
             )
     )
-    public CourseResponse update(CourseRequest courseRequest) {
+    public CourseResponse updateCourseInformation(CourseRequest courseRequest) {
         return courseFacade.updateCourse(courseRequest);
     }
 
@@ -101,10 +98,8 @@ public class CourseController {
                     schema = @Schema(type = SchemaType.ARRAY, implementation = CourseResponse.class)
             )
     )
-    public Response delete(@PathParam("id") Integer id) {
+    public Response deleteCourse(@PathParam("id") Integer id) {
         courseFacade.deleteCourseById(id);
         return Response.ok().build();
     }
-
-
 }

@@ -1,7 +1,7 @@
 package com.alberto.course.facade;
 
-import com.alberto.course.model.dto.request.CourseRequest;
-import com.alberto.course.model.dto.response.CourseResponse;
+import com.alberto.course.model.dto.CourseRequest;
+import com.alberto.course.model.dto.CourseResponse;
 import com.alberto.course.model.mapper.CourseMapper;
 import com.alberto.course.service.CourseService;
 
@@ -28,10 +28,10 @@ public class CourseFacade {
         return null;
     }
     public void saveCourse(CourseRequest courseRequest) {
-        courseService.save(CourseMapper.MAPPER.toDto(courseRequest));
+        courseService.save(CourseMapper.MAPPER.toRequestDto(courseRequest));
     }
     public CourseResponse updateCourse(CourseRequest courseRequest) {
-        var courseDto = courseService.update(CourseMapper.MAPPER.toDto(courseRequest));
+        var courseDto = courseService.update(CourseMapper.MAPPER.toRequestDto(courseRequest));
         return CourseMapper.MAPPER.toWebResponse(courseDto);
     }
     public void deleteCourseById(Integer id) {

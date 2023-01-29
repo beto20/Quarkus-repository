@@ -1,7 +1,7 @@
-package com.alberto.person.controller;
+package com.alberto.account.controller;
 
-import com.alberto.person.facade.AccountFacade;
-import com.alberto.person.model.dto.AccountRequestDto;
+import com.alberto.account.facade.AccountFacade;
+import com.alberto.account.model.dto.AccountRequestDto;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -26,7 +26,7 @@ public class AccountController {
         return Response.accepted().build();
     }
 
-    @PUT()
+    @PUT
     @Path("/{id}")
     public Response updateAccountInformation(@PathParam("id") Long accountId, AccountRequestDto requestDto) {
         accountFacade.updateAccountInformation(accountId, requestDto);

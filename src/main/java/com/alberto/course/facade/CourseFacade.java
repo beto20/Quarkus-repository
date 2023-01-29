@@ -24,6 +24,13 @@ public class CourseFacade {
         var courseDto = courseService.getById(id);
         return CourseMapper.MAPPER.toWebResponse(courseDto);
     }
+
+    public List<CourseResponse> getCoursesWithPagination(int pageIndex, int pageSize) {
+        var courseDtoList = courseService.getCoursePagination(pageIndex, pageSize);
+        return CourseMapper.MAPPER.toWebResponseList(courseDtoList);
+    }
+
+
     public CourseResponse getCoursesByTitle(String name) {
         return null;
     }

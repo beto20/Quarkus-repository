@@ -1,24 +1,40 @@
-package com.alberto.person.service;
+package com.alberto.account.service;
 
-import com.alberto.person.model.dto.AccountDto;
-import com.alberto.person.model.mapper.AccountMapper;
-import com.alberto.person.repository.AccountRepository;
+import com.alberto.account.model.Role;
+import com.alberto.account.model.dto.AccountDto;
+import com.alberto.account.model.mapper.AccountMapper;
+import com.alberto.account.repository.AccountRepository;
+import com.alberto.person.repository.StudentRepository;
+import com.alberto.person.repository.TeacherRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 @ApplicationScoped
 public class AccountServiceImpl implements AccountService {
 
     @Inject
     AccountRepository accountRepository;
+    @Inject
+    StudentRepository studentRepository;
+    @Inject
+    TeacherRepository teacherRepository;
 
+    @Transactional
     @Override
     public void registerNewAccount(AccountDto accountDto) {
-        var accountEntity = AccountMapper.MAPPER.toEntity(accountDto);
-        accountRepository.persist(accountEntity);
+        if (accountDto.getRole().equals(Role.TEACHER)){
+            var teacherEntity = AccountMapper.MAPPER.toTeacherEntity(accountDto);
+            teacherRepository.persist(teacherEntity);
+        }
+        if (accountDto.getRole().equals(Role.STUDENT)) {
+            var studentEntity = AccountMapper.MAPPER.toStudentEntity(accountDto);
+            studentRepository.persist(studentEntity);
+        }
     }
 
+    @Transactional
     @Override
     public void updateAccountInformation(Long accountId, AccountDto accountDto) {
         var accountEntity = accountRepository.findById(accountId);

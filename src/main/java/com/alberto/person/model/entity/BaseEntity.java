@@ -2,10 +2,12 @@ package com.alberto.person.model.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
-import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
-@Entity
+@MappedSuperclass
+@EntityListeners({})
 public class BaseEntity extends PanacheEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 

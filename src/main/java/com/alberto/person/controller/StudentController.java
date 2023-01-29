@@ -2,6 +2,7 @@ package com.alberto.person.controller;
 
 
 import com.alberto.person.facade.StudentFacade;
+import com.alberto.person.model.dto.EnrolledCourseRequestDto;
 import com.alberto.person.model.dto.StudentResponseDto;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
@@ -24,6 +25,12 @@ public class StudentController {
     @Path("/{id}")
     public StudentResponseDto getStudent(@PathParam("id") Long studentId) {
         return studentFacade.getStudent(studentId);
+    }
+
+    @POST
+    @Path("/enrollment")
+    public void enrolledCourse(@QueryParam("id") Long studentId, EnrolledCourseRequestDto enrolledCourseRequestDto) {
+        studentFacade.enrolledCourse(enrolledCourseRequestDto);
     }
 
 }

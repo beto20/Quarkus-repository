@@ -42,6 +42,12 @@ public class CourseController {
     }
 
     @GET
+    @Path("/page")
+    public List<CourseResponse> coursesWithPagination(@QueryParam("index") int pageIndex, @QueryParam("items") int pageSize) {
+        return courseFacade.getCoursesWithPagination(pageIndex, pageSize);
+    }
+
+    @GET
     @Path("/{id}")
     public CourseResponse getCourseDetail(@PathParam("id") Integer id) {
         return courseFacade.getCoursesById(id);

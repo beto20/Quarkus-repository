@@ -19,15 +19,17 @@ public class PersonDto implements Serializable {
     public PersonDto() {
     }
 
-    public PersonDto(String name, String lastName, String email, String password, String country, String province, String district, Boolean isActive) {
+    public PersonDto(String id, String name, String lastName, String code, String email, String password, String country, String province, String district, Boolean isActive) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
+        this.code = code;
         this.email = email;
         this.password = password;
         this.country = country;
         this.province = province;
         this.district = district;
-        this.isActive = isActive;
+        this.isActive = Boolean.TRUE;
     }
 
     public String getId() {

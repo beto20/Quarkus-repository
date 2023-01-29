@@ -1,7 +1,7 @@
-package com.alberto.person.service;
+package com.alberto.account.service;
 
 
-import com.alberto.person.model.dto.AccountDto;
+import com.alberto.account.model.dto.AccountDto;
 
 public interface AccountService {
 

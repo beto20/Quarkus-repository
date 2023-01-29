@@ -1,9 +1,9 @@
-package com.alberto.person.facade;
+package com.alberto.account.facade;
 
 
-import com.alberto.person.model.dto.AccountRequestDto;
-import com.alberto.person.model.mapper.AccountMapper;
-import com.alberto.person.service.AccountService;
+import com.alberto.account.model.dto.AccountRequestDto;
+import com.alberto.account.model.mapper.AccountMapper;
+import com.alberto.account.service.AccountService;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

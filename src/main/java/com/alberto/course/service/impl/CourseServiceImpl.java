@@ -4,7 +4,7 @@ import com.alberto.course.model.dto.CourseDto;
 import com.alberto.course.model.mapper.CourseMapper;
 import com.alberto.course.repository.CourseRepository;
 import com.alberto.course.service.CourseService;
-import lombok.RequiredArgsConstructor;
+import io.quarkus.panache.common.Page;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -14,13 +14,23 @@ import java.util.List;
 @ApplicationScoped
 public class CourseServiceImpl implements CourseService {
     @Inject
-    private CourseRepository courseRepository;
+    CourseRepository courseRepository;
 
 
     @Override
     public List<CourseDto> getAll() {
         var courseEntityList = courseRepository.findAll().list();
         return CourseMapper.MAPPER.toDtoList(courseEntityList);
+    }
+
+    @Override
+    public List<CourseDto> getCoursePagination(int pageIndex, int pageSize) {
+        if (pageIndex < 0 || pageSize <= 0) {
+            pageIndex = 0;
+            pageSize = 1;
+        }
+        var list= courseRepository.findAll().page(Page.of(pageIndex, pageSize)).list();
+        return CourseMapper.MAPPER.toDtoList(list);
     }
 
     @Override

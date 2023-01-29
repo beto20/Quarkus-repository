@@ -8,18 +8,18 @@ import java.util.List;
 public class StudentDto extends PersonDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private List<CourseDto> enrolledCourse;
+    private List<CourseDto> enrolledCourses;
 
-    public StudentDto(String id, String name, String lastName, String code, String email, String password, String country, String province, String district, Boolean isActive, List<CourseDto> enrolledCourse) {
+    public StudentDto(String id, String name, String lastName, String code, String email, String password, String country, String province, String district, Boolean isActive, List<CourseDto> enrolledCourses) {
         super(id, name, lastName, code, email, password, country, province, district, isActive);
-        this.enrolledCourse = enrolledCourse;
+        this.enrolledCourses = enrolledCourses;
     }
 
-    public List<CourseDto> getEnrolledCourse() {
-        return enrolledCourse;
+    public List<CourseDto> getEnrolledCourses() {
+        return enrolledCourses;
     }
 
-    public void setEnrolledCourse(List<CourseDto> enrolledCourse) {
-        this.enrolledCourse = enrolledCourse;
+    public void setEnrolledCourses(List<CourseDto> enrolledCourses) {
+        this.enrolledCourses = enrolledCourses;
     }
 }

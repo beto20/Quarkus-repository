@@ -1,4 +1,4 @@
-package com.alberto.person.service;
+package com.alberto.person.service.impl;
 
 import com.alberto.course.model.entity.CourseEntity;
 import com.alberto.course.model.mapper.CourseMapper;
@@ -6,6 +6,7 @@ import com.alberto.person.model.dto.EnrolledCourseRequestDto;
 import com.alberto.person.model.dto.StudentDto;
 import com.alberto.person.model.mapper.StudentMapper;
 import com.alberto.person.repository.StudentRepository;
+import com.alberto.person.service.StudentService;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

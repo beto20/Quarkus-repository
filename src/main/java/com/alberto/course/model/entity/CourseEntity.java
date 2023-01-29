@@ -1,6 +1,8 @@
 package com.alberto.course.model.entity;
 
 
+import com.alberto.person.model.entity.StudentEntity;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -16,6 +18,9 @@ public class CourseEntity implements Serializable {
     private String name;
     private String description;
     private String category;
+
+    @ManyToOne
+    private StudentEntity student;
 
     public CourseEntity() {
     }

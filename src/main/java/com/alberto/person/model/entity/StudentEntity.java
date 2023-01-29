@@ -11,8 +11,8 @@ import java.util.List;
 public class StudentEntity extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "course_id", foreignKey = @ForeignKey(name = "course_id_fk"))
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "courses_id", nullable = true)
     private List<CourseEntity> enrolledCourses;
 
     public StudentEntity(List<CourseEntity> enrolledCourses) {

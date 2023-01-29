@@ -1,6 +1,7 @@
 package com.alberto.person.controller;
 
 
+import com.alberto.account.model.dto.AccountRequestDto;
 import com.alberto.person.facade.StudentFacade;
 import com.alberto.person.model.dto.EnrolledCourseRequestDto;
 import com.alberto.person.model.dto.StudentResponseDto;
@@ -29,7 +30,7 @@ public class StudentController {
 
     @POST
     @Path("/enrollment")
-    public void enrolledCourse(@QueryParam("id") Long studentId, EnrolledCourseRequestDto enrolledCourseRequestDto) {
+    public void enrolledCourse(EnrolledCourseRequestDto enrolledCourseRequestDto) {
         studentFacade.enrolledCourse(enrolledCourseRequestDto);
     }
 

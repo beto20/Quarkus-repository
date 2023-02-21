@@ -1,7 +1,7 @@
 package com.alberto.app.account.model.dto;
 
-import com.alberto.app.account.model.Role;
 import com.alberto.app.person.model.dto.PersonDto;
+import com.alberto.core.account.model.domain.Role;
 
 import java.io.Serializable;
 

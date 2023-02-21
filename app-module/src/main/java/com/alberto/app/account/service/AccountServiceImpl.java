@@ -1,11 +1,11 @@
 package com.alberto.app.account.service;
 
-import com.alberto.app.account.model.Role;
 import com.alberto.app.account.model.dto.AccountDto;
 import com.alberto.app.account.model.mapper.AccountMapper;
-import com.alberto.app.account.repository.AccountRepository;
-import com.alberto.app.person.repository.StudentRepository;
-import com.alberto.app.person.repository.TeacherRepository;
+import com.alberto.core.account.model.domain.Role;
+import com.alberto.core.account.repository.AccountRepository;
+import com.alberto.core.person.repository.StudentRepository;
+import com.alberto.core.person.repository.TeacherRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

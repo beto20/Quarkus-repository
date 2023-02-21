@@ -2,8 +2,8 @@ package com.alberto.app.account.model.mapper;
 
 import com.alberto.app.account.model.dto.AccountDto;
 import com.alberto.app.account.model.dto.AccountRequestDto;
-import com.alberto.app.person.model.entity.StudentEntity;
-import com.alberto.app.person.model.entity.TeacherEntity;
+import com.alberto.core.person.model.entity.StudentEntity;
+import com.alberto.core.person.model.entity.TeacherEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

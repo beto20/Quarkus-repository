@@ -3,7 +3,7 @@ package com.alberto.app.course.model.mapper;
 import com.alberto.app.course.model.dto.CourseDto;
 import com.alberto.app.course.model.dto.CourseRequest;
 import com.alberto.app.course.model.dto.CourseResponse;
-import com.alberto.app.course.model.entity.CourseEntity;
+import com.alberto.core.course.model.entity.CourseEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

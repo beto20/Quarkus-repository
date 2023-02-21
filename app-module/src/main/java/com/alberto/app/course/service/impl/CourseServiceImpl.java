@@ -2,8 +2,8 @@ package com.alberto.app.course.service.impl;
 
 import com.alberto.app.course.model.dto.CourseDto;
 import com.alberto.app.course.model.mapper.CourseMapper;
-import com.alberto.app.course.repository.CourseRepository;
 import com.alberto.app.course.service.CourseService;
+import com.alberto.core.course.repository.CourseRepository;
 import io.quarkus.panache.common.Page;
 
 import javax.enterprise.context.ApplicationScoped;

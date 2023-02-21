@@ -1,7 +1,6 @@
-package com.alberto.app.course.model.entity;
+package com.alberto.core.course.model.entity;
 
-
-import com.alberto.app.person.model.entity.StudentEntity;
+import com.alberto.core.person.model.entity.StudentEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;

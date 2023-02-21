@@ -1,4 +1,4 @@
-package com.alberto.app.account.model;
+package com.alberto.core.account.model.domain;
 
 public enum Role {
 

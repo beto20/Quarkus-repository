@@ -1,8 +1,7 @@
-package com.alberto.app.account.model.entity;
+package com.alberto.core.account.model.entity;
 
-
-import com.alberto.app.account.model.Role;
-import com.alberto.app.person.model.entity.BaseEntity;
+import com.alberto.core.account.model.domain.Role;
+import com.alberto.core.person.model.entity.BaseEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

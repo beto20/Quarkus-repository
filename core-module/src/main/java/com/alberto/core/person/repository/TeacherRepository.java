@@ -1,6 +1,6 @@
-package com.alberto.app.person.repository;
+package com.alberto.core.person.repository;
 
-import com.alberto.app.person.model.entity.TeacherEntity;
+import com.alberto.core.person.model.entity.TeacherEntity;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 
 import javax.enterprise.context.ApplicationScoped;

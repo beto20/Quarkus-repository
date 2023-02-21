@@ -1,4 +1,4 @@
-package com.alberto.app.person.model.entity;
+package com.alberto.core.person.model.entity;
 
 import javax.persistence.Table;
 import java.io.Serializable;

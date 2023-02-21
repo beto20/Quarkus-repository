@@ -1,12 +1,12 @@
 package com.alberto.app.person.service.impl;
 
-import com.alberto.app.course.model.entity.CourseEntity;
 import com.alberto.app.course.model.mapper.CourseMapper;
 import com.alberto.app.person.model.dto.EnrolledCourseRequestDto;
 import com.alberto.app.person.model.dto.StudentDto;
 import com.alberto.app.person.model.mapper.StudentMapper;
-import com.alberto.app.person.repository.StudentRepository;
 import com.alberto.app.person.service.StudentService;
+import com.alberto.core.course.model.entity.CourseEntity;
+import com.alberto.core.person.repository.StudentRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

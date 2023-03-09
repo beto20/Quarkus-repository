@@ -2,10 +2,13 @@ package com.alberto.app.account.service;
 
 import com.alberto.app.account.model.dto.AccountDto;
 import com.alberto.app.account.model.mapper.AccountMapper;
+import com.alberto.app.account.pub.AccountAuditPublisher;
 import com.alberto.core.account.model.domain.Role;
 import com.alberto.core.account.repository.AccountRepository;
+import com.alberto.core.audit.sub.AccountAuditSubscriber;
 import com.alberto.core.person.repository.StudentRepository;
 import com.alberto.core.person.repository.TeacherRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -17,13 +20,17 @@ public class AccountServiceImpl implements AccountService {
     @Inject
     AccountRepository accountRepository;
     @Inject
+    AccountAuditPublisher accountAuditPublisher;
+    @Inject
+    AccountAuditSubscriber accountAuditSubscriber;
+    @Inject
     StudentRepository studentRepository;
     @Inject
     TeacherRepository teacherRepository;
 
     @Transactional
     @Override
-    public void registerNewAccount(AccountDto accountDto) {
+    public void registerNewAccount(AccountDto accountDto) throws JsonProcessingException, InterruptedException {
         if (accountDto.getRole().equals(Role.TEACHER)){
             var teacherEntity = AccountMapper.MAPPER.toTeacherEntity(accountDto);
             teacherRepository.persist(teacherEntity);
@@ -32,6 +39,8 @@ public class AccountServiceImpl implements AccountService {
             var studentEntity = AccountMapper.MAPPER.toStudentEntity(accountDto);
             studentRepository.persist(studentEntity);
         }
+        accountAuditPublisher.publish(accountDto);
+        accountAuditSubscriber.receiveMessages();
     }
 
     @Transactional

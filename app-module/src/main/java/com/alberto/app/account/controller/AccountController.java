@@ -2,6 +2,7 @@ package com.alberto.app.account.controller;
 
 import com.alberto.app.account.facade.AccountFacade;
 import com.alberto.app.account.model.dto.AccountRequestDto;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -21,7 +22,7 @@ public class AccountController {
     AccountFacade accountFacade;
 
     @POST
-    public Response registerNewAccount(AccountRequestDto requestDto) {
+    public Response registerNewAccount(AccountRequestDto requestDto) throws JsonProcessingException, InterruptedException {
         accountFacade.registerNewAccount(requestDto);
         return Response.accepted().build();
     }

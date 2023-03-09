@@ -4,6 +4,7 @@ package com.alberto.app.account.facade;
 import com.alberto.app.account.model.dto.AccountRequestDto;
 import com.alberto.app.account.model.mapper.AccountMapper;
 import com.alberto.app.account.service.AccountService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -14,7 +15,7 @@ public class AccountFacade {
     @Inject
     AccountService accountService;
 
-    public void registerNewAccount(AccountRequestDto requestDto) {
+    public void registerNewAccount(AccountRequestDto requestDto) throws JsonProcessingException, InterruptedException {
         var accountDto = AccountMapper.MAPPER.toDto(requestDto);
         accountService.registerNewAccount(accountDto);
     }

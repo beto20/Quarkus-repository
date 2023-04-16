@@ -3,6 +3,7 @@ package com.alberto.app.course.controller;
 import com.alberto.app.course.facade.CourseFacade;
 import com.alberto.app.course.model.dto.CourseRequest;
 import com.alberto.app.course.model.dto.CourseResponse;
+import com.alberto.app.course.model.dto.CustomPaginationResponse;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -45,6 +46,12 @@ public class CourseController {
     @Path("/page")
     public List<CourseResponse> coursesWithPagination(@QueryParam("index") int pageIndex, @QueryParam("items") int pageSize) {
         return courseFacade.getCoursesWithPagination(pageIndex, pageSize);
+    }
+
+    @GET
+    @Path("/custom-page")
+    public CustomPaginationResponse coursesWithCustomPagination(@QueryParam("index") int pageIndex, @QueryParam("items") int pageSize) {
+        return courseFacade.getCourseCustomPagination(pageIndex, pageSize);
     }
 
     @GET

@@ -2,8 +2,10 @@ package com.alberto.app.course.facade;
 
 import com.alberto.app.course.model.dto.CourseRequest;
 import com.alberto.app.course.model.dto.CourseResponse;
+import com.alberto.app.course.model.dto.CustomPaginationResponse;
 import com.alberto.app.course.model.mapper.CourseMapper;
 import com.alberto.app.course.service.CourseService;
+import io.quarkus.panache.common.Page;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -30,6 +32,9 @@ public class CourseFacade {
         return CourseMapper.MAPPER.toWebResponseList(courseDtoList);
     }
 
+    public CustomPaginationResponse getCourseCustomPagination(int pageIndex, int pageSize) {
+        return courseService.getCourseCustomPagination(pageIndex, pageSize);
+    }
 
     public CourseResponse getCoursesByTitle(String name) {
         return null;

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -19,12 +20,12 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 @ApplicationScoped
 public class AccountAuditSubscriber {
-    // TODO:: Agregar cadena de conexion de Azure Service Bus
-    static String connectionString = "<<CONNECTION_STRING>>";
-    // TODO:: Cambiar nombre de topico de Azure Service Bus - Topic
-    static String topicName = "demo";
-    // TODO:: Cambiar nombre de subscripcion de Azure Service Bus - Topic - Subscription
-    static String subName = "demoSubs";
+    @ConfigProperty(name = "connection-string.azure.service.bus", defaultValue = "<<CONNECTION_STRING>>")
+    String connectionString;
+    @ConfigProperty(name = "topic-name.azure.service.bus", defaultValue = "demo")
+    String topicName;
+    @ConfigProperty(name = "topic-subcription.azure.service.bus", defaultValue = "demoSubs")
+    String subName;
 
     @Inject
     AuditService auditService;

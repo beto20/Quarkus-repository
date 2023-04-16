@@ -9,15 +9,16 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class AccountAuditPublisher {
-    // TODO:: Agregar cadena de conexion de Azure Service Bus
-    static String connectionString = "<<CONNECTION_STRING>>";
-    // TODO:: Cambiar nombre de topico de Azure Service Bus - Topic
-    static String topicName = "demo";
+    @ConfigProperty(name = "connection-string.azure.service.bus", defaultValue = "<<CONNECTION_STRING>>")
+    String connectionString;
+    @ConfigProperty(name = "topic-name.azure.service.bus", defaultValue = "demo")
+    String topicName;
 
     public void publish(AccountDto accountDto) throws JsonProcessingException {
         ServiceBusSenderClient senderClient = new ServiceBusClientBuilder()

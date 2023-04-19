@@ -10,6 +10,9 @@ public class AccountDto extends PersonDto implements Serializable {
 
     private Role role;
 
+    public AccountDto() {
+    }
+
     public AccountDto(String id, String name, String lastName, String code, String email, String password, String country, String province, String district, Boolean isActive, Role role) {
         super(id, name, lastName, code, email, password, country, province, district, isActive);
         this.role = role;

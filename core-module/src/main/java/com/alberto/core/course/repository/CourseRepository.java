@@ -9,8 +9,7 @@ import javax.persistence.EntityManager;
 
 @ApplicationScoped
 public class CourseRepository implements PanacheRepositoryBase<CourseEntity, Integer> {
-    @Inject
-    EntityManager em;
+
 
 }
 

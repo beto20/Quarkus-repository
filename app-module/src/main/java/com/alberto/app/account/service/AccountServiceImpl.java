@@ -4,6 +4,7 @@ import com.alberto.app.account.model.dto.AccountDto;
 import com.alberto.app.account.model.mapper.AccountMapper;
 import com.alberto.app.account.pub.AccountAuditPublisher;
 import com.alberto.core.account.model.domain.Role;
+import com.alberto.core.account.model.entity.AccountEntity;
 import com.alberto.core.account.repository.AccountRepository;
 import com.alberto.core.audit.sub.AccountAuditSubscriber;
 import com.alberto.core.person.repository.StudentRepository;
@@ -46,16 +47,18 @@ public class AccountServiceImpl implements AccountService {
     @Transactional
     @Override
     public void updateAccountInformation(Long accountId, AccountDto accountDto) {
-        var accountEntity = accountRepository.findById(accountId);
+        var accountEntity = accountRepository.findByIdOptional(accountId);
 
-        accountEntity.setName(accountDto.getName());
-        accountEntity.setLastName(accountDto.getLastName());
-        accountEntity.setCountry(accountDto.getCountry());
-        accountEntity.setProvince(accountDto.getProvince());
-        accountEntity.setDistrict(accountDto.getDistrict());
-        accountEntity.setEmail(accountDto.getEmail());
+        if (accountEntity.isPresent()) {
+            accountEntity.get().setName(accountDto.getName());
+            accountEntity.get().setLastName(accountDto.getLastName());
+            accountEntity.get().setCountry(accountDto.getCountry());
+            accountEntity.get().setProvince(accountDto.getProvince());
+            accountEntity.get().setDistrict(accountDto.getDistrict());
+            accountEntity.get().setEmail(accountDto.getEmail());
 
-        accountRepository.persist(accountEntity);
+            accountRepository.persist(accountEntity.get());
+        }
     }
 
     @Override

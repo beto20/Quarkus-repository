@@ -10,4 +10,7 @@ public class TeacherEntity extends BaseEntity implements Serializable {
     public TeacherEntity(String name, String lastName, String code, String email, String password, String country, String province, String district, Boolean isActive) {
         super(name, lastName, code, email, password, country, province, district, isActive);
     }
+
+    public TeacherEntity() {
+    }
 }

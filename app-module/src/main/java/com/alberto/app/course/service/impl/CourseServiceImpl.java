@@ -37,7 +37,7 @@ public class CourseServiceImpl implements CourseService {
             pageIndex = 0;
             pageSize = 1;
         }
-        var list= courseRepository.findAll().page(Page.of(pageIndex, pageSize)).list();
+        var list= courseRepository.findAll().page(pageIndex, pageSize).list();
         return CourseMapper.MAPPER.toDtoList(list);
     }
 
@@ -47,14 +47,16 @@ public class CourseServiceImpl implements CourseService {
             pageSize = 1;
         }
 
-        var content = courseRepository.findAll().page(Page.of(pageIndex, pageSize)).list();
-        var hasPrevious = courseRepository.findAll().page(pageIndex, pageSize).hasPreviousPage();
-        var hasNext = courseRepository.findAll().page(pageIndex, pageSize).hasNextPage();
-        var totalPages = courseRepository.findAll().page(pageIndex, pageSize).pageCount();
+        var pageOptions = courseRepository.findAll().page(pageIndex, pageSize);
+
+        var content = pageOptions.list();
+        var hasPrevious = pageOptions.hasPreviousPage();
+        var hasNext = pageOptions.hasNextPage();
+        var totalPages = pageOptions.pageCount();
         var contentSize = content.size();
         var totalElements = courseRepository.findAll().stream().count();
-        var numberPage = courseRepository.findAll().page(pageIndex, pageSize).page().index;
-        var totalPagesSize = courseRepository.findAll().page(pageIndex, pageSize).page().size;
+        var numberPage = pageOptions.page().index;
+        var totalPagesSize = pageOptions.page().size;
 
 
         return PaginationUtil.buildCustomPagination(content, hasPrevious, hasNext, totalPages, totalElements, numberPage, totalPagesSize, contentSize);

@@ -5,7 +5,6 @@ import com.alberto.app.course.model.dto.CourseResponse;
 import com.alberto.app.course.model.dto.CustomPaginationResponse;
 import com.alberto.app.course.model.mapper.CourseMapper;
 import com.alberto.app.course.service.CourseService;
-import io.quarkus.panache.common.Page;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

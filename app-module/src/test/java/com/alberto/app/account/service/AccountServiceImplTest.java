@@ -53,8 +53,8 @@ class AccountServiceImplTest {
         Mockito.doNothing().when(teacherRepository).persist(new TeacherEntity());
         Mockito.doNothing().when(accountAuditPublisher).publish(Mockito.any());
 
-        Mockito.when(accountAuditSubscriber.receiveMessages())
-                .thenReturn(SubscriberMessageActions.COMPLETE);
+//        Mockito.when(accountAuditSubscriber.receiveMessages())
+//                .thenReturn(SubscriberMessageActions.COMPLETE);
 
         var accountDto = new AccountDto();
         accountDto.setRole(Role.STUDENT);

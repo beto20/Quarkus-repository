@@ -1,16 +1,18 @@
 package com.alberto.app.course.util;
 
 import com.alberto.app.course.model.dto.CustomPaginationResponse;
+import org.graalvm.nativeimage.c.function.CEntryPoint;
 
 public class PaginationUtil {
 
-    private PaginationUtil() {}
+    public PaginationUtil() {
+    }
 
-    public static CustomPaginationResponse buildCustomPagination(Object content, boolean hasPrevious, boolean hasNext, int totalPages, long totalElements, int numberPage, int totalPagesSize, int contentSize) {
+    public CustomPaginationResponse buildCustomPagination(Object content, Boolean hasPrevious, Boolean hasNext, Integer totalPages, Long totalElements, Integer numberPage, Integer totalPagesSize, Integer contentSize) {
         var customPaginationResponse = new CustomPaginationResponse();
 
         customPaginationResponse.setContent(content);
-        customPaginationResponse.setTotalElements((int) totalElements);
+        customPaginationResponse.setTotalElements(totalElements.intValue());
         customPaginationResponse.setTotalPages(totalPages);
         customPaginationResponse.setNumber(numberPage);
         customPaginationResponse.setSize(totalPagesSize);
@@ -21,7 +23,8 @@ public class PaginationUtil {
         return customPaginationResponse;
     }
 
-    private static void validatePageState(boolean hasPrevious, boolean hasNext, CustomPaginationResponse customPaginationResponse) {
+    public void validatePageState(Boolean hasPrevious, Boolean hasNext, CustomPaginationResponse customPaginationResponse) {
+
         if (hasPrevious && hasNext) {
             customPaginationResponse.setFirst(false);
             customPaginationResponse.setLast(false);

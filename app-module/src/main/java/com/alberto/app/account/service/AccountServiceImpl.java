@@ -41,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
             studentRepository.persist(studentEntity);
         }
         accountAuditPublisher.publish(accountDto);
-        accountAuditSubscriber.receiveMessages();
+//        accountAuditSubscriber.receiveMessages();
     }
 
     @Transactional

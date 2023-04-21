@@ -1,9 +1,7 @@
 package com.alberto.app.account.pub;
 
 import com.alberto.app.account.model.dto.AccountDto;
-import com.azure.messaging.servicebus.ServiceBusClientBuilder;
-import com.azure.messaging.servicebus.ServiceBusMessage;
-import com.azure.messaging.servicebus.ServiceBusSenderClient;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,14 +19,14 @@ public class AccountAuditPublisher {
     String topicName;
 
     public void publish(AccountDto accountDto) throws JsonProcessingException {
-        ServiceBusSenderClient senderClient = new ServiceBusClientBuilder()
-                .connectionString(connectionString)
-                .sender()
-                .topicName(topicName)
-                .buildClient();
-
-        String message = convertToJSONString(accountDto);
-        senderClient.sendMessage(new ServiceBusMessage(message));
+//        ServiceBusSenderClient senderClient = new ServiceBusClientBuilder()
+//                .connectionString(connectionString)
+//                .sender()
+//                .topicName(topicName)
+//                .buildClient();
+//
+//        String message = convertToJSONString(accountDto);
+//        senderClient.sendMessage(new ServiceBusMessage(message));
     }
 
     public static String convertToJSONString(Object object) throws JsonProcessingException {

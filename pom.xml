@@ -42,6 +42,38 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.locationtech.jts</groupId>
+            <artifactId>jts-core</artifactId>
+            <version>1.18.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.jnr</groupId>
+            <artifactId>jnr-unixsocket</artifactId>
+            <version>0.18</version>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.spec.javax.security.jacc</groupId>
+            <artifactId>jboss-jacc-api_1.5_spec</artifactId>
+            <version>2.0.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna-platform</artifactId>
+            <version>5.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.newrelic.agent.java</groupId>
+            <artifactId>newrelic-api</artifactId>
+            <version>8.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jacoco</artifactId>
             <scope>test</scope>
@@ -64,16 +96,18 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.14.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.azure</groupId>
-            <artifactId>azure-messaging-servicebus</artifactId>
-            <version>7.13.2</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--            <artifactId>jackson-databind</artifactId>-->
+<!--            <version>2.12.7.1</version>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/com.azure/azure-messaging-servicebus -->
+<!--        <dependency>-->
+<!--            <groupId>com.azure</groupId>-->
+<!--            <artifactId>azure-messaging-servicebus</artifactId>-->
+<!--            <version>7.13.4</version>-->
+<!--        </dependency>-->
+
 
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -128,13 +162,7 @@
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
-            <scope>provided</scope>
-        </dependency>
+
 
     </dependencies>
 
@@ -241,4 +269,5 @@
             </properties>
         </profile>
     </profiles>
+
 </project>

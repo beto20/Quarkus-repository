@@ -58,8 +58,9 @@ public class CourseServiceImpl implements CourseService {
         var numberPage = pageOptions.page().index;
         var totalPagesSize = pageOptions.page().size;
 
+        var paginationUtil = new PaginationUtil();
 
-        return PaginationUtil.buildCustomPagination(content, hasPrevious, hasNext, totalPages, totalElements, numberPage, totalPagesSize, contentSize);
+        return paginationUtil.buildCustomPagination(content, hasPrevious, hasNext, totalPages, totalElements, numberPage, totalPagesSize, contentSize);
     }
 
 
